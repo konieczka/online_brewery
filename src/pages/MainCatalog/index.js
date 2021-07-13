@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TitleHeader from "components/TitleHeader";
 import BeersList from "components/BeersList";
 import FiltersMenu from "components/FiltersMenu";
+import { PrimaryButton } from "components/Button";
 import convertFiltersToUrlParams from "utils/convertFiltersToUrlParams";
 import { Container } from "./styles";
 
@@ -44,10 +45,22 @@ const initialFiltersState = {
 const MainCatalog = () => {
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [isThereMoreData, setIsThereMoreData] = useState(true);
+
   const [beersList, setBeersList] = useState([]);
   const [beersListOffset, setBeersListOffset] = useState(1);
 
+  const [favList, setFavList] = useState([]);
+  const [isOnFavSection, setIsOnFavSection] = useState(false);
+
   const [filtersState, setFiltersState] = useState(initialFiltersState);
+
+  const addToFavourites = (beer) => {
+    setFavList((prevState) => [...prevState, beer]);
+  };
+
+  const removeFromFavourites = (beer) => {
+    setFavList((prevState) => prevState.filter((prev) => prev.id !== beer.id));
+  };
 
   useEffect(() => {
     setIsLoadingData(true);
@@ -99,14 +112,37 @@ const MainCatalog = () => {
           setFiltersState(initialFiltersState);
         }}
       />
-      <BeersList
-        list={beersList}
-        fetchNextBatch={() =>
-          setBeersListOffset((prevOffset) => prevOffset + 1)
-        }
-        isThereMoreData={isThereMoreData}
-        isLoadingData={isLoadingData}
-      />
+      <div style={{ textAlign: "center" }}>
+        <PrimaryButton
+          style={{ width: "40%" }}
+          onClick={() => setIsOnFavSection((prev) => !prev)}
+        >
+          {isOnFavSection ? "Catalogue" : `Favourites (${favList.length})`}
+        </PrimaryButton>
+      </div>
+      {isOnFavSection ? (
+        <BeersList
+          list={favList}
+          favList={favList}
+          fetchNextBatch={() => {}}
+          isThereMoreData={false}
+          isLoadingData={false}
+          addToFavourites={addToFavourites}
+          removeFromFavourites={removeFromFavourites}
+        />
+      ) : (
+        <BeersList
+          list={beersList}
+          favList={favList}
+          fetchNextBatch={() =>
+            setBeersListOffset((prevOffset) => prevOffset + 1)
+          }
+          isThereMoreData={isThereMoreData}
+          isLoadingData={isLoadingData}
+          addToFavourites={addToFavourites}
+          removeFromFavourites={removeFromFavourites}
+        />
+      )}
     </Container>
   );
 };

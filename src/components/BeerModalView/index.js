@@ -12,7 +12,13 @@ import {
   ButtonsGroup,
 } from "./styles";
 
-const BeerModalView = ({ beerId, hideModal }) => {
+const BeerModalView = ({
+  beerId,
+  hideModal,
+  isFavourite,
+  addToFavourites,
+  removeFromFavourites,
+}) => {
   const [beerData, setBeerData] = useState(null);
 
   useEffect(() => {
@@ -96,9 +102,17 @@ const BeerModalView = ({ beerId, hideModal }) => {
       <ButtonsGroup>
         <SecondaryButton onClick={hideModal}>Cancel</SecondaryButton>
         <PrimaryButton
-          onClick={() => alert(`Ordered one cold and tasty ${beerData.name}!`)}
+          onClick={() => {
+            if (!isFavourite) {
+              addToFavourites(beerData);
+            } else {
+              removeFromFavourites(beerData);
+            }
+
+            hideModal();
+          }}
         >
-          Order
+          {isFavourite ? "Remove from fav" : "Add to fav"}
         </PrimaryButton>
       </ButtonsGroup>
     </BeerModalContainer>

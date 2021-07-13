@@ -12,9 +12,12 @@ import {
 
 const BeersList = ({
   list,
+  favList,
   fetchNextBatch,
   isLoadingData,
   isThereMoreData,
+  addToFavourites,
+  removeFromFavourites,
 }) => {
   const [beerModalId, setBeerModalId] = useState("");
 
@@ -36,6 +39,9 @@ const BeersList = ({
           {beerModalId === beer.id && (
             <BeerModalView
               beerId={beer.id}
+              isFavourite={favList.map((b) => b.id).includes(beer.id)}
+              addToFavourites={addToFavourites}
+              removeFromFavourites={removeFromFavourites}
               hideModal={() =>
                 setBeerModalId((prevState) =>
                   beer.id === prevState ? "" : beer.id
