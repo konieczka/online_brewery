@@ -43,10 +43,6 @@ const MainCatalog = () => {
   const [filtersState, setFiltersState] = useState(initialFiltersState);
 
   useEffect(() => {
-    console.log("FILTERS STATE", filtersState);
-  }, [filtersState]);
-
-  useEffect(() => {
     setIsLoadingData(true);
     const filtersAsParams = convertFiltersToUrlParams(filtersState);
 
