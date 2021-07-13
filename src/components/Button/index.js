@@ -19,6 +19,14 @@ export const PrimaryButton = styled.button`
   }
 `;
 
+export const SecondaryButton = styled(PrimaryButton)`
+  background-color: ${theme.colors.bgLight};
+
+  &:hover {
+    background-color: #990000;
+  }
+`;
+
 export const PrimaryButtonNoBg = styled(PrimaryButton)`
   background-color: unset;
   border: solid 1px ${theme.colors.white};
