@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  padding: 50px 15px;
+  padding: 16px;
 
   * {
     font-family: ${theme.fonts.title};
@@ -21,5 +21,35 @@ export const Container = styled.div`
   h2 {
     font-size: 2.25rem;
     color: ${theme.colors.primary};
+  }
+
+  @media (max-width: 700px) {
+    flex-flow: row wrap;
+    padding: 16px;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    * {
+      margin-right: 16px;
+    }
+  }
+`;
+
+export const Logo = styled.div`
+  width: 128px;
+  height: 128px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  @media (max-width: 700px) {
+    width: 64px;
+    height: 64px;
   }
 `;

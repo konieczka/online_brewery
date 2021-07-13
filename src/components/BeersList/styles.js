@@ -2,10 +2,7 @@ import styled from "styled-components";
 import theme from "constants/theme";
 
 export const Container = styled.div`
-  height: 70%;
   width: 100%;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.6);
   padding: 32px 0;
   display: flex;
   flex-flow: column nowrap;
@@ -19,6 +16,7 @@ export const BeerCard = styled.div`
   margin-bottom: 16px;
   display: flex;
   flex-flow: row nowrap;
+  padding: 16px 8px;
 `;
 
 export const BeerNumber = styled.div`
@@ -26,14 +24,14 @@ export const BeerNumber = styled.div`
   color: ${theme.colors.white};
   font-size: 48px;
   width: 10%;
+  padding-top: 18px;
   text-align: right;
 `;
 
 export const Separator = styled.div`
-  height: 100%;
+  min-height: 100%;
   width: 1px;
-  margin-left: 12px;
-  margin-right: 8px;
+  margin: 0 20px;
   background-color: ${theme.colors.white};
 `;
 
@@ -46,34 +44,17 @@ export const BeerDatabox = styled.div`
     font-family: ${theme.fonts.sectionHeader};
     color: ${theme.colors.white};
     font-size: 2rem;
+    margin: 0;
   }
 
   h2 {
     font-size: 1.15rem;
     font-family: ${theme.fonts.regular};
     color: ${theme.colors.primary};
+    margin: 0;
   }
 
   strong {
     font-family: ${theme.fonts.regular};
-  }
-`;
-
-export const LoadMoreButton = styled.button`
-  width: 30%;
-  padding: 16px;
-  margin-bottom: 32px;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.15rem;
-  font-family: ${theme.fonts.sectionHeader};
-  background-color: ${theme.colors.primaryDark};
-  color: ${theme.colors.white};
-  transition-duration: 200ms;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.black};
   }
 `;

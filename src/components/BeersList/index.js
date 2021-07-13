@@ -1,12 +1,12 @@
 import React from "react";
 import Loader from "components/Loader";
+import { PrimaryButton } from "components/Button";
 import {
   Container,
   BeerCard,
   BeerNumber,
   Separator,
   BeerDatabox,
-  LoadMoreButton,
 } from "./styles";
 
 const BeersList = ({
@@ -41,7 +41,7 @@ const BeersList = ({
         <Loader />
       ) : (
         isThereMoreData && (
-          <LoadMoreButton onClick={fetchNextBatch}>Show more</LoadMoreButton>
+          <PrimaryButton onClick={fetchNextBatch}>Show more</PrimaryButton>
         )
       )}
     </Container>
