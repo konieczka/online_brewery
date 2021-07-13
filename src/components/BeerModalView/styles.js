@@ -1,7 +1,7 @@
 import theme from "constants/theme";
 import styled from "styled-components";
 
-export const BeerModalBody = styled.div`
+export const BeerModalContainer = styled.div`
   width: 75%;
   height: 80%;
   border-radius: 15px;
@@ -12,16 +12,14 @@ export const BeerModalBody = styled.div`
   top: 10%;
   left: 10%;
   padding: 16px;
-  overflow-y: scroll;
-
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
 
   * {
     margin: 0;
   }
+`;
+
+export const HeaderSection = styled.div`
+  height: 15%;
 
   h1 {
     color: ${theme.colors.white};
@@ -35,6 +33,17 @@ export const BeerModalBody = styled.div`
     font-size: 1.75rem;
     margin-bottom: 8px;
   }
+`;
+
+export const BeerModalBody = styled.div`
+  width: 100%;
+  height: 70%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
 `;
 
 export const SectionLabel = styled.span`
@@ -51,11 +60,6 @@ export const SectionSingleParagraph = styled.div`
   color: ${theme.colors.white};
   margin-bottom: 8px;
   padding-left: 32px;
-
-  button {
-    margin-top: 16px;
-    margin-right: 16px;
-  }
 `;
 
 export const SectionList = styled.ul`
@@ -73,6 +77,16 @@ export const SectionList = styled.ul`
       margin-right: 6px;
     }
   }
+`;
+
+export const ButtonsGroup = styled.div`
+  margin-top: 16px;
+  height: 15%;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 export const SvgIcon = styled.img`
