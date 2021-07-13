@@ -18,12 +18,16 @@ const BeersList = ({
 }) => {
   const [beerModalId, setBeerModalId] = useState("");
 
-  if (list.length === 0) {
+  if (list.length === 0 && isLoadingData) {
     return (
       <Container>
         <Loader />
       </Container>
     );
+  }
+
+  if (list.length === 0) {
+    return <Container>No beers found.</Container>;
   }
   return (
     <Container>

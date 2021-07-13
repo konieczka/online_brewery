@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PrimaryButton, PrimaryButtonNoBg } from "components/Button";
 import CustomRangeInput from "components/CustomRangeInput";
+import CustomSearchInput from "components/CustomSearchInput";
 import { FiltersMenuModal } from "./styles";
 
 const FiltersMenu = ({
@@ -26,6 +27,21 @@ const FiltersMenu = ({
       {isModalVisible && (
         <FiltersMenuModal>
           <h1>Filters</h1>
+          <CustomSearchInput
+            upperLimit={filtersBoundaries.search.max}
+            value={filtersState.search.value}
+            onChange={(e) =>
+              changeFiltersState((prevState) => ({
+                ...prevState,
+                anyFiltersPresent: true,
+                newFiltersApplied: !prevState.newFiltersApplied,
+                search: {
+                  value: e.target.value,
+                  selected: true,
+                },
+              }))
+            }
+          />
           <CustomRangeInput
             label="ABV"
             maxVal={filtersState.abv.max}

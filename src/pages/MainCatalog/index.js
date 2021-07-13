@@ -17,6 +17,9 @@ const filtersBoundaries = {
     max: 500,
     step: 10,
   },
+  search: {
+    max: 64,
+  },
 };
 
 const initialFiltersState = {
@@ -31,6 +34,10 @@ const initialFiltersState = {
     selected: false,
     min: filtersBoundaries.ibu.min,
     max: filtersBoundaries.ibu.max,
+  },
+  search: {
+    selected: false,
+    value: "",
   },
 };
 

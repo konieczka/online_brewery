@@ -9,6 +9,10 @@ const convertFiltersToUrlParams = (filterset) => {
     result += `ibu_gt=${filterset.ibu.min}&ibu_lt=${filterset.ibu.max}&`;
   }
 
+  if (filterset.search.selected) {
+    result += `beer_name=${filterset.search.value}&`;
+  }
+
   return result;
 };
 

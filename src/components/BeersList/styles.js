@@ -17,6 +17,13 @@ export const BeerCard = styled.div`
   display: flex;
   flex-flow: row nowrap;
   padding: 16px 8px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 200ms;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 `;
 
 export const BeerNumber = styled.div`
