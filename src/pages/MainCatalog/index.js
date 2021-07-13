@@ -43,6 +43,10 @@ const MainCatalog = () => {
   const [filtersState, setFiltersState] = useState(initialFiltersState);
 
   useEffect(() => {
+    console.log("FILTERS STATE", filtersState);
+  }, [filtersState]);
+
+  useEffect(() => {
     setIsLoadingData(true);
     const filtersAsParams = convertFiltersToUrlParams(filtersState);
 
@@ -73,6 +77,8 @@ const MainCatalog = () => {
 
   useEffect(() => {
     if (filtersState.newFiltersApplied) {
+      setBeersList([]);
+      setIsThereMoreData(true);
       setBeersListOffset(1);
     }
   }, [filtersState.newFiltersApplied]);
@@ -84,7 +90,11 @@ const MainCatalog = () => {
         filtersBoundaries={filtersBoundaries}
         filtersState={filtersState}
         changeFiltersState={setFiltersState}
-        resetFilters={() => setFiltersState(initialFiltersState)}
+        resetFilters={() => {
+          setBeersList([]);
+          setIsThereMoreData(true);
+          setFiltersState(initialFiltersState);
+        }}
       />
       <BeersList
         list={beersList}

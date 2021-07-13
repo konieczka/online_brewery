@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PrimaryButton } from "components/Button";
+import { PrimaryButton, PrimaryButtonNoBg } from "components/Button";
 import CustomRangeInput from "components/CustomRangeInput";
 import { FiltersMenuModal } from "./styles";
 
@@ -13,10 +13,16 @@ const FiltersMenu = ({
   const toggleModal = () => setIsModalVisible((prevState) => !prevState);
 
   return (
-    <div style={{ position: "relative" }}>
-      <PrimaryButton style={{ marginLeft: "32px" }} onClick={toggleModal}>
-        Apply filters
-      </PrimaryButton>
+    <div style={{ position: "relative", textAlign: "center" }}>
+      <PrimaryButtonNoBg style={{ marginTop: "32px" }} onClick={toggleModal}>
+        Filters{" "}
+        {filtersState.anyFiltersPresent &&
+          `(${
+            Object.keys(filtersState).filter(
+              (filter) => filtersState[filter].selected
+            ).length
+          })`}
+      </PrimaryButtonNoBg>
       {isModalVisible && (
         <FiltersMenuModal>
           <h1>Filters</h1>
@@ -84,7 +90,9 @@ const FiltersMenu = ({
             maxLimits={filtersBoundaries.ibu}
             step={filtersBoundaries.ibu.step}
           />
-          <PrimaryButton onClick={resetFilters}>Reset filters</PrimaryButton>
+          <PrimaryButtonNoBg onClick={resetFilters}>
+            Reset filters
+          </PrimaryButtonNoBg>
           <PrimaryButton onClick={toggleModal}>Apply filters</PrimaryButton>
         </FiltersMenuModal>
       )}

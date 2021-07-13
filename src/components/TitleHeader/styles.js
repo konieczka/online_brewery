@@ -10,6 +10,7 @@ export const Container = styled.div`
 
   * {
     font-family: ${theme.fonts.title};
+    margin: 0;
   }
 
   h1 {

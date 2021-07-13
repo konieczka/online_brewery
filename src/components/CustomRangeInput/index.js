@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import {
   RangeContainer,
   RangeFormWrapper,
@@ -6,23 +6,6 @@ import {
   NumChangeButton,
   InputWrapper,
 } from "./styles";
-
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
-const RESET = "RESET";
-
-const valueReducer = (currentVal, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return currentVal + action.step;
-    case DECREMENT:
-      return currentVal - action.step;
-    case RESET:
-      return action.defaultVal;
-    default:
-      return currentVal;
-  }
-};
 
 const CustomRangeInput = ({
   label,
@@ -34,9 +17,6 @@ const CustomRangeInput = ({
   maxLimits,
   step,
 }) => {
-  const [maxInputVal, setMaxInputVal] = useReducer(valueReducer, maxVal);
-  const [minInputVal, setMinInputVal] = useReducer(valueReducer, minVal);
-
   return (
     <RangeContainer>
       <strong>{label}</strong>
@@ -51,20 +31,18 @@ const CustomRangeInput = ({
           <InputWrapper>
             <NumChangeButton
               onClick={() => {
-                if (minInputVal - step >= minLimits.min) {
-                  setMinInputVal({ type: DECREMENT, step });
-                  onChangeMin(minInputVal);
+                if (minVal - step >= minLimits.min) {
+                  onChangeMin(minVal - step);
                 }
               }}
             >
               -
             </NumChangeButton>
-            <strong>{minInputVal}</strong>
+            <strong>{minVal}</strong>
             <NumChangeButton
               onClick={() => {
-                if (minInputVal + step <= minLimits.max) {
-                  setMinInputVal({ type: INCREMENT, step });
-                  onChangeMin(minInputVal);
+                if (minVal + step <= minLimits.max) {
+                  onChangeMin(minVal + step);
                 }
               }}
             >
@@ -74,23 +52,20 @@ const CustomRangeInput = ({
 
           {/* Maximum value input */}
           <InputWrapper>
-            {" "}
             <NumChangeButton
               onClick={() => {
-                if (maxInputVal - step >= maxLimits.min) {
-                  setMaxInputVal({ type: DECREMENT, step });
-                  onChangeMax(maxInputVal);
+                if (maxVal - step >= maxLimits.min) {
+                  onChangeMax(maxVal - step);
                 }
               }}
             >
               -
             </NumChangeButton>
-            <strong>{maxInputVal}</strong>
+            <strong>{maxVal}</strong>
             <NumChangeButton
               onClick={() => {
-                if (maxInputVal + step <= maxLimits.max) {
-                  setMaxInputVal({ type: INCREMENT, step });
-                  onChangeMax(maxInputVal);
+                if (maxVal + step <= maxLimits.max) {
+                  onChangeMax(maxVal + step);
                 }
               }}
             >

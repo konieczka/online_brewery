@@ -18,3 +18,14 @@ export const PrimaryButton = styled.button`
     color: ${theme.colors.black};
   }
 `;
+
+export const PrimaryButtonNoBg = styled(PrimaryButton)`
+  background-color: unset;
+  border: solid 1px ${theme.colors.white};
+
+  &:hover {
+    color: ${theme.colors.primary};
+    border-color: ${theme.colors.primary};
+    background-color: unset;
+  }
+`;

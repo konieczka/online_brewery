@@ -7,7 +7,6 @@ export const FiltersMenuModal = styled.div`
   backdrop-filter: blur(2px);
   position: fixed;
   z-index: 100;
-  padding: 32px;
   top: 0;
   left: 0;
 
@@ -16,8 +15,12 @@ export const FiltersMenuModal = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
+  * {
+    margin: 0;
+  }
+
   button {
-    margin-top: 16px;
+    margin-top: 8px;
     width: 60%;
   }
 `;
