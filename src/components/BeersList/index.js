@@ -35,7 +35,7 @@ const BeersList = ({
   return (
     <Container>
       {list.map((beer, index) => (
-        <>
+        <div key={beer.id} style={{ width: "100%" }}>
           {beerModalId === beer.id && (
             <BeerModalView
               beerId={beer.id}
@@ -55,7 +55,6 @@ const BeersList = ({
                 beer.id === prevState ? "" : beer.id
               )
             }
-            key={beer.id}
           >
             <BeerNumber>{index + 1}</BeerNumber>
             <Separator />
@@ -67,7 +66,7 @@ const BeersList = ({
               }`}</strong>
             </BeerDatabox>
           </BeerCard>
-        </>
+        </div>
       ))}
       {isLoadingData ? (
         <Loader />

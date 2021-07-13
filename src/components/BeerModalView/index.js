@@ -58,7 +58,7 @@ const BeerModalView = ({
         </SectionLabel>
         <SectionList>
           {beerData.ingredients.malt.map((m) => (
-            <li>
+            <li key={m.name}>
               <strong>
                 {m.name} {m.amount.value}&nbsp;
                 {getShortForUnit(m.amount.unit)}
@@ -71,7 +71,7 @@ const BeerModalView = ({
         </SectionLabel>
         <SectionList>
           {beerData.ingredients.hops.map((h) => (
-            <li>
+            <li key={h.name}>
               <strong>
                 {h.name} {h.amount.value}&nbsp;
                 {getShortForUnit(h.amount.unit)}
@@ -93,7 +93,7 @@ const BeerModalView = ({
         </SectionLabel>
         <SectionList>
           {beerData.food_pairing.map((food) => (
-            <li>
+            <li key={food}>
               <strong>{food}</strong>
             </li>
           ))}
